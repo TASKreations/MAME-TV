@@ -6,7 +6,7 @@ adb_bin="${ANDROID_HOME:?Set ANDROID_HOME to the Android SDK}/platform-tools/adb
 "$adb_bin" install --no-streaming --no-incremental -r app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
 log=$(mktemp)
 trap 'rm -f "$log"' EXIT
-"$adb_bin" shell am instrument -w com.taskreations.mametv.test/com.taskreations.mametv.SmokeInstrumentation | tee "$log"
+"$adb_bin" shell am instrument -w -r com.taskreations.mametv.test/com.taskreations.mametv.SmokeInstrumentation | tee "$log"
 # adb can exit zero even when instrumentation fails. Verify the runner's result.
 python3 - "$log" <<'PY'
 import pathlib, sys

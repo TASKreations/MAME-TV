@@ -136,7 +136,12 @@ would need a separate licensing/core decision before release.
   and English text localization. The upstream legacy core also emits compiler
   warnings; its source has not been altered to hide them.
 - `scripts/setup-cloud.sh` was executed successfully and replayed against the
-  retained dependencies. A device smoke runner is provided separately.
+  retained dependencies.
+- All three device smoke checks pass on the x86-64 Android emulator: Android
+  archive import, loading the embedded core and rejecting an unsupported ROM,
+  and library launch with initial focus and D-pad navigation. The runner waits
+  for the library's foreground window and uses Android UI automation for input.
+  ARM TV hardware has not been tested.
 - **Actual gameplay has not been validated.** The managed runtime's current
   network policy blocks `www.mamedev.org`, so its authorized sample ROM could
   not be downloaded. Required domain additions were saved to the environment

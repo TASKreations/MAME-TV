@@ -50,7 +50,9 @@ public final class MainActivity extends Activity {
         library = column(); root.addView(library);
         root.addView(text("Gamepad: Select inserts a coin · Start begins · Back returns here", 13, 0xff8c9bb0));
         refresh();
-        actions.getChildAt(0).requestFocus();
+        View initialAction = actions.getChildAt(0);
+        initialAction.setFocusableInTouchMode(true);
+        initialAction.requestFocus();
     }
 
     private LinearLayout column() { LinearLayout layout = new LinearLayout(this); layout.setOrientation(LinearLayout.VERTICAL); return layout; }
